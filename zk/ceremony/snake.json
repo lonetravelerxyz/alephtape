@@ -1,0 +1,73 @@
+{
+ "circuit": "snake",
+ "protocol": "groth16",
+ "curve": "bn128",
+ "snarkjs": "0.7.6",
+ "startedAt": "2026-10-05T12:38:02.712Z",
+ "r1cs": {
+  "file": "snake.r1cs",
+  "sha256": "a43ae87947fedc0f0ec1a4bd142bd1a9e3fac7223934dbb04ea1d2a69318b99d"
+ },
+ "ptau": {
+  "file": "ppot_0080_17.ptau",
+  "sha256": "f807e065fde53f72f4bf4d57140fab85b26daa6cc95bdfec7cce93622b3a367c",
+  "source": "https://pse-trusted-setup-ppot.s3.eu-central-1.amazonaws.com/pot28_0080/ppot_0080_17.ptau",
+  "note": "PSE perpetual powers of tau, contribution 0080, 2^17"
+ },
+ "initial": {
+  "file": "snake_0000.zkey",
+  "sha256": "40674a767f4316873bbdb0f9eff7eabcb7534d70470073d3b04331b766c2b862",
+  "note": "deterministic: snarkjs groth16 setup r1cs ptau reproduces it"
+ },
+ "contribution": {
+  "name": "AlephTape #1 (OS entropy, discarded)",
+  "hash": "7365e25748f5ef1a8c2f78c004f620f9b6ff39f48fa59f2a33d765e1148adc536f21541be3f9aa922187d9a058340219120cb51f6eb93e4ecc837b6df563a07c",
+  "sha256": "a34af83ba58286a136a9f2ea6056d66d46a109c1d594dead520808fa26d34d06"
+ },
+ "beacon": {
+  "chainId": 196,
+  "rpc": "https://rpc.xlayer.tech",
+  "tag": "finalized",
+  "number": 72433586,
+  "hash": "0x13931d5b071761010dfa346068a4a49fc11df7c5de919cb8509321ba9d4f90a4",
+  "timestamp": 1791202622,
+  "iterationsExp": 10,
+  "name": "X Layer mainnet block 72433586",
+  "contributionHash": "203e62d0344822ef5091f500dba396dceecc4eabffc38adef9b36a942e8cf1041292271c3a79c824c4e05376cf4312844ba9cde7b2a42aad9109032b1cd0c00b"
+ },
+ "verify": {
+  "ok": true,
+  "log": [
+   "Circuit hash: 3ff7109b a94c99e7 cc3dd193 cacfe890 625b88a6 1c7da0e8 29d9af24 56aa80f7 2fc089ce 115dd419 fb89463f 248d2712 b6cf8ac3 1dbc32a9 57ee7649 5656db28",
+   "Circuit Hash: 3ff7109b a94c99e7 cc3dd193 cacfe890 625b88a6 1c7da0e8 29d9af24 56aa80f7 2fc089ce 115dd419 fb89463f 248d2712 b6cf8ac3 1dbc32a9 57ee7649 5656db28",
+   "contribution #2 X Layer mainnet block 72433586: 203e62d0 344822ef 5091f500 dba396dc eecc4eab ffc38ade f9b36a94 2e8cf104 1292271c 3a79c824 c4e05376 cf431284 4ba9cde7 b2a42aad 9109032b 1cd0c00b",
+   "Beacon generator: 13931d5b071761010dfa346068a4a49fc11df7c5de919cb8509321ba9d4f90a4",
+   "Beacon iterations Exp: 10",
+   "contribution #1 AlephTape #1 (OS entropy, discarded): 7365e257 48f5ef1a 8c2f78c0 04f620f9 b6ff39f4 8fa59f2a 33d765e1 148adc53 6f21541b e3f9aa92 2187d9a0 58340219 120cb51f 6eb93e4e cc837b6d f563a07c",
+   "ZKey Ok!"
+  ]
+ },
+ "final": {
+  "file": "snake.zkey",
+  "sha256": "64adde2faa99a5a7918bde5d4f88af5a78f28b67a0f701288356921fbf6556ae",
+  "bytes": 40197466,
+  "note": "gitignored artifact; shipped in the prover image"
+ },
+ "zkeyUrl": "https://storage.googleapis.com/alephtape-zkeys-project-fc075461-c949-43c1-b3b/alephtape-zkeys-groth16-snake-20261005/snake/snake.zkey",
+ "vk": {
+  "file": "vk.json",
+  "sha256": "8084cc0d8da94d2cf7a476d84532d53202fd9ed2a7314eed789bdad813f2bfbd",
+  "nPublic": 2
+ },
+ "verifier": {
+  "file": "SnakeGroth16Verifier.sol",
+  "sha256": "f866eaff666069d3974b6e5c5332f0c060f2b460e78be0ecdb6323a66b1c512f",
+  "contract": "SnakeGroth16Verifier"
+ },
+ "seconds": 38,
+ "howToVerify": [
+  "snarkjs zkey verify snake.r1cs ppot_0080_17.ptau snake.zkey   (or: node zk/ceremony.cjs verify zk/build/snake snake)",
+  "check the beacon: eth_getBlockByNumber(beacon.number) on X Layer mainnet (196) returns beacon.hash",
+  "check the deployed verifier's constants: snarkjs zkey export solidityverifier on the same zkey"
+ ]
+}

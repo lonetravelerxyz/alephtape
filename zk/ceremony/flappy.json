@@ -1,0 +1,73 @@
+{
+ "circuit": "flappy",
+ "protocol": "groth16",
+ "curve": "bn128",
+ "snarkjs": "0.7.6",
+ "startedAt": "2026-10-05T12:40:02.983Z",
+ "r1cs": {
+  "file": "flappy.r1cs",
+  "sha256": "8b0bfa935f1acda2914be332e6bfea1604c6d8dcc713d6e4233bcdadf2540346"
+ },
+ "ptau": {
+  "file": "ppot_0080_17.ptau",
+  "sha256": "f807e065fde53f72f4bf4d57140fab85b26daa6cc95bdfec7cce93622b3a367c",
+  "source": "https://pse-trusted-setup-ppot.s3.eu-central-1.amazonaws.com/pot28_0080/ppot_0080_17.ptau",
+  "note": "PSE perpetual powers of tau, contribution 0080, 2^17"
+ },
+ "initial": {
+  "file": "flappy_0000.zkey",
+  "sha256": "2135415dec04031eef18112717da1ae990b94f62106ae5e14abff8f9d043de7e",
+  "note": "deterministic: snarkjs groth16 setup r1cs ptau reproduces it"
+ },
+ "contribution": {
+  "name": "AlephTape #1 (OS entropy, discarded)",
+  "hash": "c2374e315b2106a2509dc5578a141c0b82e7dbaa7668ea3b2153a493c8e0eabbe0b65d434363488489609f4089e47b4e19fc3808978f79fb52f924b505080a66",
+  "sha256": "69bfb58eea0fd29ce3423e688b6a9e6d785a1a7951ffc012c4e667011ebe30c4"
+ },
+ "beacon": {
+  "chainId": 196,
+  "rpc": "https://rpc.xlayer.tech",
+  "tag": "finalized",
+  "number": 72433586,
+  "hash": "0x13931d5b071761010dfa346068a4a49fc11df7c5de919cb8509321ba9d4f90a4",
+  "timestamp": 1791202622,
+  "iterationsExp": 10,
+  "name": "X Layer mainnet block 72433586",
+  "contributionHash": "141dbe0034e86e36062cf1755169711fa55c251e5b62ce285515dc800b0a8ba33997e6db355ce2bbe401ad6c430bec53b1996140df54660b99f797a534b89c30"
+ },
+ "verify": {
+  "ok": true,
+  "log": [
+   "Circuit hash: 55862a19 488cbb81 d8b3b53a ddbd447c 7570cb70 738df32d b27d3f08 0a3da66a ee9fb96c 4b123e5a acac6a1a 200172fe 3a9f6c85 ae4268a0 dc408d1d 1845e514",
+   "Circuit Hash: 55862a19 488cbb81 d8b3b53a ddbd447c 7570cb70 738df32d b27d3f08 0a3da66a ee9fb96c 4b123e5a acac6a1a 200172fe 3a9f6c85 ae4268a0 dc408d1d 1845e514",
+   "contribution #2 X Layer mainnet block 72433586: 141dbe00 34e86e36 062cf175 5169711f a55c251e 5b62ce28 5515dc80 0b0a8ba3 3997e6db 355ce2bb e401ad6c 430bec53 b1996140 df54660b 99f797a5 34b89c30",
+   "Beacon generator: 13931d5b071761010dfa346068a4a49fc11df7c5de919cb8509321ba9d4f90a4",
+   "Beacon iterations Exp: 10",
+   "contribution #1 AlephTape #1 (OS entropy, discarded): c2374e31 5b2106a2 509dc557 8a141c0b 82e7dbaa 7668ea3b 2153a493 c8e0eabb e0b65d43 43634884 89609f40 89e47b4e 19fc3808 978f79fb 52f924b5 05080a66",
+   "ZKey Ok!"
+  ]
+ },
+ "final": {
+  "file": "flappy.zkey",
+  "sha256": "1aa48263771ef0ba661d64a421d126fc9b3b53e1068d87168504c5935e52c46e",
+  "bytes": 39678898,
+  "note": "gitignored artifact; shipped in the prover image"
+ },
+ "vk": {
+  "file": "vk.json",
+  "sha256": "afd4312822b0cfd2ecabcfd17c7e145965b59840533099f4c00214184b716f2a",
+  "nPublic": 2
+ },
+ "verifier": {
+  "file": "FlappyGroth16Verifier.sol",
+  "sha256": "bc1751de70a53a1ae41f1513d3c48098ee4c42d49676de12fb1ff90ac655666b",
+  "contract": "FlappyGroth16Verifier"
+ },
+ "seconds": 49,
+ "howToVerify": [
+  "snarkjs zkey verify flappy.r1cs ppot_0080_17.ptau flappy.zkey   (or: node zk/ceremony.cjs verify zk/build/flappy flappy)",
+  "check the beacon: eth_getBlockByNumber(beacon.number) on X Layer mainnet (196) returns beacon.hash",
+  "check the deployed verifier's constants: snarkjs zkey export solidityverifier on the same zkey"
+ ],
+ "zkeyUrl": "https://storage.googleapis.com/alephtape-zkeys-project-fc075461-c949-43c1-b3b/alephtape-zkeys-groth16-flappy-20261005/flappy/flappy.zkey"
+}

@@ -1,0 +1,17 @@
+# local
+.DS_Store
+node_modules/
+.env
+.env.*
+
+# foundry
+contracts/out/
+contracts/cache/
+
+# python venv
+circuits/.venv/
+__pycache__/
+zk/bin/
+zk/ptau/
+zk/node_modules/
+zk/build/

@@ -1,0 +1,74 @@
+{
+ "circuit": "gomoku_attack",
+ "protocol": "groth16",
+ "curve": "bn128",
+ "snarkjs": "0.7.6",
+ "startedAt": "2026-10-05T17:51:17.515Z",
+ "r1cs": {
+  "file": "gomoku_attack.r1cs",
+  "sha256": "ebb0b1591cb88671698801e141be8ce5091ae3d1d60e7c28d48e96f48cd3a116"
+ },
+ "ptau": {
+  "file": "ppot_0080_17.ptau",
+  "sha256": "f807e065fde53f72f4bf4d57140fab85b26daa6cc95bdfec7cce93622b3a367c",
+  "source": "https://pse-trusted-setup-ppot.s3.eu-central-1.amazonaws.com/pot28_0080/ppot_0080_17.ptau",
+  "note": "PSE perpetual powers of tau, contribution 0080, 2^17"
+ },
+ "initial": {
+  "file": "gomoku_attack_0000.zkey",
+  "sha256": "9ddd205d955427f8447d4ce1899f130b444a0a590379e50352c2c7a1d59ef604",
+  "note": "deterministic: snarkjs groth16 setup r1cs ptau reproduces it"
+ },
+ "contribution": {
+  "name": "AlephTape #1 (OS entropy, discarded)",
+  "hash": "cd657ddba151eadf7656678b9c46653a8129f42ddb7ce91b4233a3e039734cfa4859d078e6de40a73dd7a439f119249d5ab3ffcab676dfe2224be2da6bc2454f",
+  "sha256": "e5edd4d2181189419e593a03f2e1bd1ab2f8aa8e1eb9a398f9d90a226ec1d7a0"
+ },
+ "beacon": {
+  "chainId": 196,
+  "rpc": "https://rpc.xlayer.tech",
+  "tag": "finalized",
+  "number": 72452503,
+  "hash": "0x5cd2dc73d4835ca88f017882117e02652776513423480583f69a3b396ac56997",
+  "timestamp": 1791221539,
+  "iterationsExp": 10,
+  "name": "X Layer mainnet block 72452503",
+  "contributionHash": "4fa6f13292b72829c6e73d577bb526849f2db6cd0b45458776a395969e4a7e7ee93d6d9a900bd7e42902ecce4273099caaab6a66adb9fe171fb5105ea15d2e5d"
+ },
+ "verify": {
+  "ok": true,
+  "log": [
+   "Circuit hash: 03b9b6fe 44467628 f6a98b09 6cc12651 0191ae8e 431600d8 e62cb4a5 ec322ed8 ca6254c8 a8ed8b45 9daf7a86 b41a5564 48834c3f b83701dd 48517cf5 a946cc4e",
+   "Circuit Hash: 03b9b6fe 44467628 f6a98b09 6cc12651 0191ae8e 431600d8 e62cb4a5 ec322ed8 ca6254c8 a8ed8b45 9daf7a86 b41a5564 48834c3f b83701dd 48517cf5 a946cc4e",
+   "contribution #2 X Layer mainnet block 72452503: 4fa6f132 92b72829 c6e73d57 7bb52684 9f2db6cd 0b454587 76a39596 9e4a7e7e e93d6d9a 900bd7e4 2902ecce 4273099c aaab6a66 adb9fe17 1fb5105e a15d2e5d",
+   "Beacon generator: 5cd2dc73d4835ca88f017882117e02652776513423480583f69a3b396ac56997",
+   "Beacon iterations Exp: 10",
+   "contribution #1 AlephTape #1 (OS entropy, discarded): cd657ddb a151eadf 7656678b 9c46653a 8129f42d db7ce91b 4233a3e0 39734cfa 4859d078 e6de40a7 3dd7a439 f119249d 5ab3ffca b676dfe2 224be2da 6bc2454f",
+   "ZKey Ok!"
+  ]
+ },
+ "final": {
+  "file": "gomoku_attack.zkey",
+  "sha256": "e51d7275b09031633a21ebbe6f631c05aa46f8f826fac7999baf8b7649090f9e",
+  "bytes": 39970806,
+  "note": "gitignored artifact; shipped in the prover image",
+  "url": "https://storage.googleapis.com/alephtape-zkeys-project-fc075461-c949-43c1-b3b/alephtape-zkeys-groth16-arena-20261006/gomoku_attack/gomoku_attack.zkey"
+ },
+ "vk": {
+  "file": "vk.json",
+  "sha256": "9113e681e28ce5bc890ea23b8038c156e26de897a184da064d20771062615983",
+  "nPublic": 3
+ },
+ "verifier": {
+  "file": "GomokuAttackGroth16Verifier.sol",
+  "sha256": "c8e53678ddafea45bf532fd0ed4ceb395632cdb5a24baa7114b2d403d951ea64",
+  "contract": "GomokuAttackGroth16Verifier"
+ },
+ "seconds": 46,
+ "howToVerify": [
+  "snarkjs zkey verify gomoku_attack.r1cs ppot_0080_17.ptau gomoku_attack.zkey   (or: node zk/ceremony.cjs verify zk/build/gomoku_attack gomoku_attack)",
+  "check the beacon: eth_getBlockByNumber(beacon.number) on X Layer mainnet (196) returns beacon.hash",
+  "check the deployed verifier's constants: snarkjs zkey export solidityverifier on the same zkey"
+ ],
+ "zkeyUrl": "https://storage.googleapis.com/alephtape-zkeys-project-fc075461-c949-43c1-b3b/alephtape-zkeys-groth16-arena-20261006/gomoku_attack/gomoku_attack.zkey"
+}

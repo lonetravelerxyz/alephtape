@@ -1,0 +1,73 @@
+{
+ "circuit": "game2048",
+ "protocol": "groth16",
+ "curve": "bn128",
+ "snarkjs": "0.7.6",
+ "startedAt": "2026-10-05T12:58:39.134Z",
+ "r1cs": {
+  "file": "game2048.r1cs",
+  "sha256": "3d832128cb23adb2d7dfc42c8baba1ee5a8bf3c8269cba94a594a2340d41e42a"
+ },
+ "ptau": {
+  "file": "ppot_0080_17.ptau",
+  "sha256": "f807e065fde53f72f4bf4d57140fab85b26daa6cc95bdfec7cce93622b3a367c",
+  "source": "https://pse-trusted-setup-ppot.s3.eu-central-1.amazonaws.com/pot28_0080/ppot_0080_17.ptau",
+  "note": "PSE perpetual powers of tau, contribution 0080, 2^17"
+ },
+ "initial": {
+  "file": "game2048_0000.zkey",
+  "sha256": "d05612dca5e6cd4635db3ec1d523f2d964611a0b1fa8b37900b42cf2deada275",
+  "note": "deterministic: snarkjs groth16 setup r1cs ptau reproduces it"
+ },
+ "contribution": {
+  "name": "AlephTape #1 (OS entropy, discarded)",
+  "hash": "2082a10f89e905abbab228a2ffce7c8770b44073e3183e9283ca2fe827e137c31014888f0bfc75be3c951d44cc9c87434bdf49e151603014be156e1849c1e09e",
+  "sha256": "b05df49964bdacd29dd4f985a8e0903483f521507ddfac04c09ca8ab84e40390"
+ },
+ "beacon": {
+  "chainId": 196,
+  "rpc": "https://rpc.xlayer.tech",
+  "tag": "finalized",
+  "number": 72434736,
+  "hash": "0xe829d138b4efd9e27dfe6ae92663905e054fec91b6f1beada877ac013fbaadcd",
+  "timestamp": 1791203772,
+  "iterationsExp": 10,
+  "name": "X Layer mainnet block 72434736",
+  "contributionHash": "b0941533c9c77929cb4d3ced31ee4d150f0d87e864d40e70e5c2304799edc0008b7a90d3f3ed98971f20135b4675aae83cfe15dd51f51c11f927dc6484a11e6e"
+ },
+ "verify": {
+  "ok": true,
+  "log": [
+   "Circuit hash: 199d5f42 030e229f 83cd0dcb 20e80294 fa0df465 a3b27b8c 92c7f909 6c7c9ded 09453085 a82508bd 61bccede e23d99d9 6cdd3705 5e2fc0d7 f30e8974 ccf8e72d",
+   "Circuit Hash: 199d5f42 030e229f 83cd0dcb 20e80294 fa0df465 a3b27b8c 92c7f909 6c7c9ded 09453085 a82508bd 61bccede e23d99d9 6cdd3705 5e2fc0d7 f30e8974 ccf8e72d",
+   "contribution #2 X Layer mainnet block 72434736: b0941533 c9c77929 cb4d3ced 31ee4d15 0f0d87e8 64d40e70 e5c23047 99edc000 8b7a90d3 f3ed9897 1f20135b 4675aae8 3cfe15dd 51f51c11 f927dc64 84a11e6e",
+   "Beacon generator: e829d138b4efd9e27dfe6ae92663905e054fec91b6f1beada877ac013fbaadcd",
+   "Beacon iterations Exp: 10",
+   "contribution #1 AlephTape #1 (OS entropy, discarded): 2082a10f 89e905ab bab228a2 ffce7c87 70b44073 e3183e92 83ca2fe8 27e137c3 1014888f 0bfc75be 3c951d44 cc9c8743 4bdf49e1 51603014 be156e18 49c1e09e",
+   "ZKey Ok!"
+  ]
+ },
+ "final": {
+  "file": "game2048.zkey",
+  "sha256": "f9895be0b0b7304a8c0bb85f394bd97b630efbd56ffb6e5d4ffe33fe91b749c0",
+  "bytes": 47731922,
+  "note": "gitignored artifact; shipped in the prover image"
+ },
+ "vk": {
+  "file": "vk.json",
+  "sha256": "7050d4a8654f6e11ba5438543e46c753229c0ccccf83f19558d043e00b89a5cb",
+  "nPublic": 2
+ },
+ "verifier": {
+  "file": "Game2048Groth16Verifier.sol",
+  "sha256": "3851c9ece430fb61605db75295ff3ff75ea6c53ec0499a798c711f208ac3e961",
+  "contract": "Game2048Groth16Verifier"
+ },
+ "seconds": 48,
+ "howToVerify": [
+  "snarkjs zkey verify game2048.r1cs ppot_0080_17.ptau game2048.zkey   (or: node zk/ceremony.cjs verify zk/build/game2048 game2048)",
+  "check the beacon: eth_getBlockByNumber(beacon.number) on X Layer mainnet (196) returns beacon.hash",
+  "check the deployed verifier's constants: snarkjs zkey export solidityverifier on the same zkey"
+ ],
+ "zkeyUrl": "https://storage.googleapis.com/alephtape-zkeys-project-fc075461-c949-43c1-b3b/alephtape-zkeys-groth16-2048-20261005/game2048/game2048.zkey"
+}

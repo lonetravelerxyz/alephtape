@@ -1,0 +1,72 @@
+{
+ "circuit": "gomoku",
+ "protocol": "groth16",
+ "curve": "bn128",
+ "snarkjs": "0.7.6",
+ "startedAt": "2026-10-05T08:12:47.309Z",
+ "r1cs": {
+  "file": "gomoku.r1cs",
+  "sha256": "abcdf69b819c632c53b649bc8e9e9ab9844e15248df16e49c337bd4fedf19934"
+ },
+ "ptau": {
+  "file": "ppot_0080_17.ptau",
+  "sha256": "f807e065fde53f72f4bf4d57140fab85b26daa6cc95bdfec7cce93622b3a367c",
+  "source": "https://pse-trusted-setup-ppot.s3.eu-central-1.amazonaws.com/pot28_0080/ppot_0080_17.ptau",
+  "note": "PSE perpetual powers of tau, contribution 0080, 2^17"
+ },
+ "initial": {
+  "file": "gomoku_0000.zkey",
+  "sha256": "662a10d9e1c6caea2f6666f022134c05dba4780cde9e2be3f61089939ab877ba",
+  "note": "deterministic: snarkjs groth16 setup r1cs ptau reproduces it"
+ },
+ "contribution": {
+  "name": "AlephTape #1 (OS entropy, discarded)",
+  "hash": "75b6a8e9371b7085b62791da5fb238b1df0d6cf3be6971658c3c9f80f2888ba0807a657a5563797bfa3601b174f79ee9d34b2e066305931108b2c31b1a5ed6e3",
+  "sha256": "21206426c08256526040a4a737c1bbb9a544b967883c0e751f597748594d3233"
+ },
+ "beacon": {
+  "chainId": 196,
+  "rpc": "https://rpc.xlayer.tech",
+  "tag": "finalized",
+  "number": 72417432,
+  "hash": "0x6cd29fe298deced5685ddfdf0548c3ae6b87cd4028bb3f2ea5a553beb7aab7e3",
+  "timestamp": 1791186468,
+  "iterationsExp": 10,
+  "name": "X Layer mainnet block 72417432",
+  "contributionHash": "22ef4e658d0e46010aae08958c7560c8ebdd57adf7f6d5cadee26d24fd2d562ccdded778764f25e8be3ea6e0858834150dde5a97468bc00dd792f16acd1082ab"
+ },
+ "verify": {
+  "ok": true,
+  "log": [
+   "Circuit hash: 19e07c78 c5d2a2cb 955352fb b342c0ff 973172ef 5d93caab 3ec44457 053644d8 b35ed4a3 97f68b72 ba79ed24 6f7020cc ee738538 ffd57c9b 1367c9bc abc18c12",
+   "Circuit Hash: 19e07c78 c5d2a2cb 955352fb b342c0ff 973172ef 5d93caab 3ec44457 053644d8 b35ed4a3 97f68b72 ba79ed24 6f7020cc ee738538 ffd57c9b 1367c9bc abc18c12",
+   "contribution #2 X Layer mainnet block 72417432: 22ef4e65 8d0e4601 0aae0895 8c7560c8 ebdd57ad f7f6d5ca dee26d24 fd2d562c cdded778 764f25e8 be3ea6e0 85883415 0dde5a97 468bc00d d792f16a cd1082ab",
+   "Beacon generator: 6cd29fe298deced5685ddfdf0548c3ae6b87cd4028bb3f2ea5a553beb7aab7e3",
+   "Beacon iterations Exp: 10",
+   "contribution #1 AlephTape #1 (OS entropy, discarded): 75b6a8e9 371b7085 b62791da 5fb238b1 df0d6cf3 be697165 8c3c9f80 f2888ba0 807a657a 5563797b fa3601b1 74f79ee9 d34b2e06 63059311 08b2c31b 1a5ed6e3",
+   "ZKey Ok!"
+  ]
+ },
+ "final": {
+  "file": "gomoku.zkey",
+  "sha256": "b9d8a358ad8d0ae455709eaef9342b6067f8cbb1d0d0159930c3dd297c06a216",
+  "bytes": 39961014,
+  "note": "gitignored artifact; shipped in the prover image"
+ },
+ "vk": {
+  "file": "vk.json",
+  "sha256": "3a8691b2ee88ebdc1b287391f3c3c0752b2399b8671410ebd86b3b9e3061e66a",
+  "nPublic": 3
+ },
+ "verifier": {
+  "file": "GomokuGroth16Verifier.sol",
+  "sha256": "6bff0dc2577f99c4335a1b50a93335073f628d2b3cb69e390d008b6902a12a3a",
+  "contract": "GomokuGroth16Verifier"
+ },
+ "seconds": 35,
+ "howToVerify": [
+  "snarkjs zkey verify gomoku.r1cs ppot_0080_17.ptau gomoku.zkey   (or: node zk/ceremony.cjs verify zk/build/gomoku gomoku)",
+  "check the beacon: eth_getBlockByNumber(beacon.number) on X Layer mainnet (196) returns beacon.hash",
+  "check the deployed verifier's constants: snarkjs zkey export solidityverifier on the same zkey"
+ ]
+}
